@@ -1,12 +1,10 @@
-import type EventEmitter from "events"
-
+import type EventEmitter from 'events'
 import { AuthenticationCreds } from './Auth'
 import { Chat, PresenceData } from './Chat'
 import { Contact } from './Contact'
-import { ConnectionState } from './State'
-
 import { GroupMetadata, ParticipantAction } from './GroupMetadata'
-import { MessageInfoUpdate, MessageUpdateType, WAMessage, WAMessageUpdate, WAMessageKey } from './Message'
+import { MessageUpdateType, MessageUserReceiptUpdate, WAMessage, WAMessageKey, WAMessageUpdate } from './Message'
+import { ConnectionState } from './State'
 
 export type BaileysEventMap<T> = {
     /** connection state has been updated -- WS closed, opened, connecting etc. */
@@ -39,7 +37,7 @@ export type BaileysEventMap<T> = {
      *  */
     'messages.upsert': { messages: WAMessage[], type: MessageUpdateType }
 
-    'message-info.update': MessageInfoUpdate[]
+    'message-receipt.update': MessageUserReceiptUpdate[]
 
     'groups.upsert': GroupMetadata[]
     'groups.update': Partial<GroupMetadata>[]

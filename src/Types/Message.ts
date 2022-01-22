@@ -1,10 +1,9 @@
-import type { ReadStream } from "fs"
-import type { Logger } from "pino"
-import type { URL } from "url"
-import type NodeCache from "node-cache"
-import type { GroupMetadata } from "./GroupMetadata"
-import type { Readable } from "stream"
+import type NodeCache from 'node-cache'
+import type { Logger } from 'pino'
+import type { Readable } from 'stream'
+import type { URL } from 'url'
 import { proto } from '../../WAProto'
+import type { GroupMetadata } from './GroupMetadata'
 
 // export the WAMessage Prototypes
 export { proto as WAProto }
@@ -167,14 +166,10 @@ export type MessageGenerationOptions = MessageContentGenerationOptions & Message
 
 export type MessageUpdateType = 'append' | 'notify' | 'replace'
 
-export type MessageInfoEventMap = { [jid: string]: Date }
-export interface MessageInfo {
-    reads: MessageInfoEventMap
-    deliveries: MessageInfoEventMap
-}
+export type MessageUserReceipt = proto.IUserReceipt
 
 export type WAMessageUpdate = { update: Partial<WAMessage>, key: proto.IMessageKey }
 
 export type WAMessageCursor = { before: WAMessageKey | undefined } | { after: WAMessageKey | undefined }
 
-export type MessageInfoUpdate = { key: proto.IMessageKey, update: Partial<MessageInfo> }
+export type MessageUserReceiptUpdate = { key: proto.IMessageKey, receipt: MessageUserReceipt }
